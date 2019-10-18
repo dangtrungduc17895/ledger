@@ -9,9 +9,11 @@ import com.pet.ledger.service.base.SessionService;
 import com.pet.ledger.utils.ValidateUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class SessionServiceImpl implements SessionService {
 
     private final SessionRepository sessionRepository;

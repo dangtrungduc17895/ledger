@@ -17,23 +17,18 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class User extends BaseModel {
     @Column(name = "email")
-    @NotNull
     private String email;
 
     @Column(name = "name")
-    @NotNull
     private String name;
 
     @Column(name = "given_name")
-    @NotNull
     private String giveName;
 
     @Column(name = "family_name")
-    @NotNull
     private String familyName;
 
     @Column(name = "picture")
-    @NotNull
     private String picture;
 
     @Column(name = "phone_number")
@@ -43,7 +38,7 @@ public class User extends BaseModel {
     private String skype;
 
 
-    public User(@NotNull String email, @NotNull String name, @NotNull String picture) {
+    public User(String email, String name, String picture) {
         this.email = email;
         this.name = name;
         this.picture = picture;

@@ -18,7 +18,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class Session extends BaseModel {
     @Column(name = "expired_session")
-    @NotNull
     private long expiredSession;
 
     @ManyToOne(fetch = FetchType.LAZY)
