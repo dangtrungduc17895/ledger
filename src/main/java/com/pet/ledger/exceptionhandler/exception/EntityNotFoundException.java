@@ -27,5 +27,4 @@ public class EntityNotFoundException extends Exception {
                         (m, i) -> m.put(((Class<K>) String.class).cast(entries[i]), ((Class<V>) String.class).cast(entries[i + 1])),
                         Map::putAll);
     }
-
 }

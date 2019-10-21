@@ -2,7 +2,6 @@ package com.pet.ledger.controller.subcontroller;
 
 import com.pet.ledger.constant.CodeResponse;
 import com.pet.ledger.constant.FormatConstant;
-import com.pet.ledger.constant.MessageConstant;
 import com.pet.ledger.exceptionhandler.exception.MyException;
 import com.pet.ledger.model.type.GoogleUser;
 import com.pet.ledger.model.type.Session;

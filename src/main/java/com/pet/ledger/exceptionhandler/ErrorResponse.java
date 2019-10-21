@@ -9,5 +9,4 @@ class ErrorResponse {
     private int code;
     private ErrorFormat data;
     private String message;
-
 }

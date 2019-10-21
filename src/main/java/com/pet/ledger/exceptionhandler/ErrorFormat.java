@@ -115,7 +115,6 @@ public class ErrorFormat {
 
 
     interface ApiSubError {
-
     }
 
     @Data
@@ -135,7 +134,6 @@ public class ErrorFormat {
 }
 
 class LowerCaseClassNameResolver extends TypeIdResolverBase {
-
     @Override
     public String idFromValue(Object value) {
         return value.getClass().getSimpleName().toLowerCase();
