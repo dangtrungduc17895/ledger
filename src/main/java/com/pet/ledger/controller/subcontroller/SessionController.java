@@ -17,6 +17,7 @@ import com.pet.ledger.service.base.UserService;
 import com.pet.ledger.utils.ResponseUtils;
 import com.pet.ledger.utils.ValidateUtils;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 
+@Slf4j
 @RestController
 @AllArgsConstructor
 @RequestMapping(value = "/v1/sessions")
@@ -36,10 +38,11 @@ public class SessionController  {
 
     @PostMapping()
     public ResponseEntity<ResponseModel> getLogin(@Valid @RequestBody LoginRequest loginRequest) throws IOException, MyException {
+
+        log.info("REQUEST: "+loginRequest.toString());
         GoogleUser googleUser = googleUserService.getGoogleUserInfo(loginRequest.getToken());
         if (ValidateUtils.isNTQMail(googleUser.getEmail(), FormatConstant.FORMAT_NTQ_MAIL)){
-            return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode(),
-                    MessageConstant.FAIL_EMAIL), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
 
         }
         User user = googleUserService.getUserFromGoogleUser(googleUser);
@@ -50,6 +53,7 @@ public class SessionController  {
         Session session = new Session(findUserByEmail);
         sessionService.insert(session);
         LoginResponse loginResponse = new LoginResponse(session.getId(),user.getName(),user.getPicture());
+        log.info("RESPOND: "+loginResponse.toString());
         return ResponseUtils.buildResponseEntity(loginResponse, HttpStatus.OK);
     }
 
@@ -57,8 +61,7 @@ public class SessionController  {
     public ResponseEntity<ResponseModel> getLogout(@PathVariable(name = "session_id") String sessionId) throws MyException {
         Session session = sessionService.getEntityById(sessionId);
         if (session == null) {
-            return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode(),
-                    MessageConstant.ENTITY_NOT_FOUND), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
         }
         LogoutResponse logoutResponse = new LogoutResponse(session.getUser().getName(),sessionId);
         sessionService.deleteById(sessionId);

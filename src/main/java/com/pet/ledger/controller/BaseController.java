@@ -21,10 +21,10 @@ import java.util.List;
 public abstract class BaseController {
 
     protected static final ResponseEntity<ResponseModel> NOT_CAPTAIN_COURSE = new ResponseEntity<>(new ResponseModel(
-            CodeResponse.FAIL_CODE.getCode(), MessageConstant.NOT_CAPTAIN_COURSE), HttpStatus.OK);
+            CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
 
     protected static final ResponseEntity<ResponseModel> ENTITY_NOT_FOUND = new ResponseEntity<>(new ResponseModel(
-            CodeResponse.FAIL_CODE.getCode(), MessageConstant.ENTITY_NOT_FOUND), HttpStatus.OK);
+            CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
 
 
 
