@@ -18,7 +18,6 @@ public class SessionServiceImpl implements SessionService {
 
     private final SessionRepository sessionRepository;
 
-
     @Override
     public boolean insert(Session entity) {
         sessionRepository.save(entity);
@@ -29,7 +28,6 @@ public class SessionServiceImpl implements SessionService {
     public boolean updateById(String id, Session session) {
         return false;
     }
-
 
     @Override
     public boolean deleteById(String id) {
@@ -65,5 +63,4 @@ public class SessionServiceImpl implements SessionService {
     public void deleteAllByExpiredSessionLessThan(long currentTime) {
         sessionRepository.deleteAllByExpiredSessionLessThan(currentTime);
     }
-
 }

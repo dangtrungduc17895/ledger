@@ -1,8 +1,6 @@
 package com.pet.ledger.controller;
 
 import com.pet.ledger.constant.CodeResponse;
-import com.pet.ledger.constant.MessageConstant;
-import com.pet.ledger.model.BaseModel;
 import com.pet.ledger.model.type.Session;
 import com.pet.ledger.model.type.User;
 import com.pet.ledger.response.ResponseModel;
@@ -14,8 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @Getter
 public abstract class BaseController {
@@ -26,16 +22,11 @@ public abstract class BaseController {
     protected static final ResponseEntity<ResponseModel> ENTITY_NOT_FOUND = new ResponseEntity<>(new ResponseModel(
             CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
 
-
-
     @Autowired
     protected SessionService sessionService;
 
     @Autowired
     protected UserService userService;
-
-
-
 
     protected  String getUserIdFromTokenSession(String tokenSession) {
         Session session = sessionService.getEntityById(tokenSession);
@@ -46,5 +37,4 @@ public abstract class BaseController {
         Session session = sessionService.getEntityById(tokenSession);
         return session.getUser();
     }
-
 }

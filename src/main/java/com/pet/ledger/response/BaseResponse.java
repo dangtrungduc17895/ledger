@@ -4,7 +4,6 @@ import com.pet.ledger.constant.DateTimeConstant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-
 @Data
 @AllArgsConstructor
 public abstract class BaseResponse {

@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class ConvertTimeUtils {
 
     private ConvertTimeUtils() {}
@@ -28,6 +27,5 @@ public class ConvertTimeUtils {
             return -1;
         }
     }
-
 
 }

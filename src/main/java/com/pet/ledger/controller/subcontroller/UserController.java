@@ -13,7 +13,6 @@ import java.util.List;
 public class UserController {
     private UserService userService;
 
-
     @GetMapping("/{user_id}")
     public User getUserById(@PathVariable(name = "user_id") String userId) {
         return userService.getEntityById(userId);
@@ -29,6 +28,4 @@ public class UserController {
     public List<User> getListUser() {
         return userService.findAll();
     }
-
-
 }
