@@ -14,21 +14,6 @@ public class UserController {
     private UserService userService;
 
 
-    @GetMapping("/{user_id}")
-    public User getUserById(@PathVariable(name = "user_id") String userId) {
-        return userService.getEntityById(userId);
-    }
-
-    @GetMapping("")
-    public List<User> getAllUser( ) {
-        return userService.findAll();
-    }
-
-    @GetMapping("/test")
-    @ResponseBody
-    public List<User> getListUser() {
-        return userService.findAll();
-    }
 
 
 }

@@ -2,7 +2,6 @@ package com.pet.ledger.controller.subcontroller;
 
 import com.pet.ledger.constant.CodeResponse;
 import com.pet.ledger.constant.FormatConstant;
-import com.pet.ledger.constant.MessageConstant;
 import com.pet.ledger.exceptionhandler.exception.MyException;
 import com.pet.ledger.model.type.GoogleUser;
 import com.pet.ledger.model.type.Session;
@@ -41,7 +40,7 @@ public class SessionController  {
 
         log.info("REQUEST: "+loginRequest.toString());
         GoogleUser googleUser = googleUserService.getGoogleUserInfo(loginRequest.getToken());
-        if (ValidateUtils.isNTQMail(googleUser.getEmail(), FormatConstant.FORMAT_NTQ_MAIL)){
+        if (ValidateUtils.isNotNTQMail(googleUser.getEmail(), FormatConstant.FORMAT_NTQ_MAIL)){
             return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
 
         }
