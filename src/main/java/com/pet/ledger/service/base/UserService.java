@@ -1,6 +1,5 @@
 package com.pet.ledger.service.base;
 
-
 import com.pet.ledger.model.type.User;
 import com.pet.ledger.service.Service;
 

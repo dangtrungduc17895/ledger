@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-public enum  CodeResponse {
+public enum CodeResponse {
 
     SUCCESS_CODE(1,"Success"),
     FAIL_CODE(0,"Failed"),

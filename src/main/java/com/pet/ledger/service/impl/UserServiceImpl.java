@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @Service
 @AllArgsConstructor
 @Transactional
@@ -68,7 +67,6 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
-
     @Override
     public boolean deleteById(String id) {
         return false;
@@ -83,5 +81,4 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.findById(id).orElse(null);
     }
-
 }

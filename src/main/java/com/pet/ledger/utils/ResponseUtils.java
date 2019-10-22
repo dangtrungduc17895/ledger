@@ -12,6 +12,4 @@ public class ResponseUtils {
     public static<T extends BaseResponse> ResponseEntity<ResponseModel> buildResponseEntity(T t, HttpStatus status) {
         return new ResponseEntity<>(new ResponseModel(t), status);
     }
-
-
 }

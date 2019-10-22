@@ -43,6 +43,4 @@ public class ValidateUtils {
     public static boolean isCollectionNotNullAndEmpty(Collection<Object> collection) {
         return !isCollectionNullOrEmpty(collection);
     }
-
-
 }

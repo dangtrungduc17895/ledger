@@ -28,5 +28,4 @@ public class MessageConstant {
     public static final String REQUEST_BODY_NOT_NULL="Request body not null";
     private MessageConstant() {}
 
-
 }
