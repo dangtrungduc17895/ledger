@@ -27,6 +27,7 @@ public class TradingController extends BaseController {
 
     @Autowired
     private TradingService tradingService;
+
     @Autowired
     private SessionService sessionService;
 
@@ -34,13 +35,9 @@ public class TradingController extends BaseController {
     public ResponseEntity<ResponseModel> insertTrading(@RequestHeader("token")String token,
                                                        @RequestBody CreateTradingRequest createTradingRequest) {
         User user = sessionService.getEntityById(token).getUser();
-        System.out.println("LALALALA1");
         Trading trading = ModelMapperUtils.transferObject(createTradingRequest, Trading.class);
-        System.out.println("LALALALA2");
         trading.setUser(user);
-        System.out.println("LALALALA3");
         tradingService.insert(trading);
-        System.out.println("LALALALA4");
         return ResponseUtils.buildResponseEntity(new CreateTradingResponse(), HttpStatus.OK);
     }
 

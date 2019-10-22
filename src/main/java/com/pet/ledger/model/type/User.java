@@ -1,23 +1,22 @@
 package com.pet.ledger.model.type;
 
 import com.pet.ledger.model.BaseModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "users", schema = "public")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseModel {
+
+    @Id
+    private String id;
+
     @Column(name = "email")
     private String email;
 
@@ -42,6 +41,8 @@ public class User extends BaseModel {
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Trading> tradings;
 
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Trading> sessions;
 
     public User(String email, String name, String picture) {
         this.email = email;
