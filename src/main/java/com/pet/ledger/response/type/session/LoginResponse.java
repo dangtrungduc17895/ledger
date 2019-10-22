@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class LoginResponse extends BaseResponse {
-    @JsonProperty("token_session")
-    private String tokenSession;
+    @JsonProperty("token")
+    private String token;
     private String name;
     private String picture;
 }

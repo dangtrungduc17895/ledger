@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -35,6 +38,9 @@ public class User extends BaseModel {
 
     @Column(name = "skype")
     private String skype;
+
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Trading> tradings;
 
 
     public User(String email, String name, String picture) {

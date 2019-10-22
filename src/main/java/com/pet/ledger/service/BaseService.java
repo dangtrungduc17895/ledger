@@ -14,6 +14,7 @@ public abstract class BaseService<T extends BaseModel> implements Service<T> {
 
     @Override
     public boolean insert(T entity) {
+        System.out.println(entity.getClass().getName());
         modelRepository.save(entity);
         return true;
     }

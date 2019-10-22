@@ -17,7 +17,7 @@ class RequestValidator {
     }
 
     boolean isValid(HttpServletRequest request) {
-        String token = request.getHeader("token_session");
+        String token = request.getHeader("token");
         if (sessionService.isExpiredSessionById(token)) {
             sessionService.updateExpiredSession(token);
             return true;

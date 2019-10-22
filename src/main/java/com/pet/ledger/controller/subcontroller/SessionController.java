@@ -40,7 +40,7 @@ public class SessionController  {
 
         log.info("REQUEST: "+loginRequest.toString());
         GoogleUser googleUser = googleUserService.getGoogleUserInfo(loginRequest.getToken());
-        if (ValidateUtils.isNTQMail(googleUser.getEmail(), FormatConstant.FORMAT_NTQ_MAIL)){
+        if (ValidateUtils.isNotNTQMail(googleUser.getEmail(), FormatConstant.FORMAT_NTQ_MAIL)){
             return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
 
         }

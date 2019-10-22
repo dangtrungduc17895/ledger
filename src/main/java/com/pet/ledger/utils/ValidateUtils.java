@@ -13,7 +13,7 @@ public class ValidateUtils {
 
     private ValidateUtils() {}
 
-    public static boolean isNTQMail(String email, String formatEmail) {
+    public static boolean isNotNTQMail(String email, String formatEmail) {
         String emailPattern = FormatConstant.FORM_EMAIL + formatEmail + "$";
         Pattern regex = Pattern.compile(emailPattern);
         Matcher matcher = regex.matcher(email);
