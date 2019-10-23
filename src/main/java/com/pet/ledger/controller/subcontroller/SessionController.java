@@ -47,6 +47,7 @@ public class SessionController  {
         User user = googleUserService.getUserFromGoogleUser(googleUser);
         User findUserByEmail = userService.getUserByEmail(user.getEmail());
         if (findUserByEmail==null) {
+            user.setAmount(0.0f);
             userService.insert(user);
         }
         Session session = new Session(findUserByEmail);

@@ -1,5 +1,6 @@
 package com.pet.ledger.model.type;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pet.ledger.model.BaseModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -39,8 +41,14 @@ public class User extends BaseModel {
     @Column(name = "skype")
     private String skype;
 
+    @Column(name = "amount")
+    private Float amount;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Trading> tradings = new ArrayList<>();
+
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Trading> tradings;
+    private List<Session> sessions;
 
 
     public User(String email, String name, String picture) {

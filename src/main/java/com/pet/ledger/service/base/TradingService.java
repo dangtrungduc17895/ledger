@@ -9,4 +9,8 @@ import java.util.List;
 public interface TradingService<E extends Trading> extends Service<E> {
 
     List<Trading> getTradingListByUser(User user);
+
+    int getRequestTotal(User user, Integer type, String time);
+
+    int getSendTotal(User user, Integer type, String time);
 }

@@ -8,7 +8,6 @@ import com.pet.ledger.response.ResponseModel;
 import com.pet.ledger.response.type.trading.CreateTradingResponse;
 import com.pet.ledger.response.type.trading.TradingListResponse;
 import com.pet.ledger.response.type.trading.TradingResponse;
-import com.pet.ledger.service.base.SessionService;
 import com.pet.ledger.service.base.TradingService;
 import com.pet.ledger.utils.ModelMapperUtils;
 import com.pet.ledger.utils.ResponseUtils;
@@ -26,21 +25,17 @@ import java.util.List;
 public class TradingController extends BaseController {
 
     @Autowired
-    private TradingService tradingService;
-    @Autowired
-    private SessionService sessionService;
+    private TradingService<Trading> tradingService;
 
     @PostMapping()
     public ResponseEntity<ResponseModel> insertTrading(@RequestHeader("token")String token,
                                                        @RequestBody CreateTradingRequest createTradingRequest) {
-        User user = sessionService.getEntityById(token).getUser();
-        System.out.println("LALALALA1");
+
+        User user = getUserFromTokenSession(token);
         Trading trading = ModelMapperUtils.transferObject(createTradingRequest, Trading.class);
-        System.out.println("LALALALA2");
         trading.setUser(user);
-        System.out.println("LALALALA3");
         tradingService.insert(trading);
-        System.out.println("LALALALA4");
+        userService.changeAmountUser(user, trading.getMoneyChanges());
         return ResponseUtils.buildResponseEntity(new CreateTradingResponse(), HttpStatus.OK);
     }
 

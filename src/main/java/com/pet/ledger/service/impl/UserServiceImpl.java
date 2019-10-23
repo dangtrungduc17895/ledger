@@ -4,6 +4,7 @@ import com.pet.ledger.constant.MessageConstant;
 import com.pet.ledger.exceptionhandler.exception.MyException;
 import com.pet.ledger.model.type.User;
 import com.pet.ledger.repository.UserRepository;
+import com.pet.ledger.service.BaseService;
 import com.pet.ledger.service.base.UserService;
 import com.pet.ledger.utils.ValidateUtils;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseService<User> implements UserService<User> {
 
     private final UserRepository userRepository;
 
@@ -45,13 +46,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean insert(User user) {
-        if (ValidateUtils.isObjectNullOrEmpty(user)){
-            return false;
+    public void changeAmountUser(User user, float moneyChanges) {
+        if (user.getAmount()==null) {
+            user.setAmount(0.0f);
         }
+        Float newAmount = user.getAmount() + moneyChanges;
+        user.setAmount(newAmount);
         userRepository.save(user);
-        return true;
     }
+
 
     @Override
     public boolean updateById(String id, User entity) {
@@ -67,18 +70,4 @@ public class UserServiceImpl implements UserService {
         return true;
     }
 
-    @Override
-    public boolean deleteById(String id) {
-        return false;
-    }
-
-    @Override
-    public User getEntityById(String id) {
-
-        if (ValidateUtils.isStringNullOrEmpty(id)) {
-            throw new MyException(MessageConstant.ENTITY_NOT_FOUND);
-        }
-
-        return userRepository.findById(id).orElse(null);
-    }
 }
