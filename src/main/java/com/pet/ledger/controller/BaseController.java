@@ -23,7 +23,7 @@ public abstract class BaseController {
             CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
 
     @Autowired
-    protected SessionService sessionService;
+    protected SessionService<Session> sessionService;
 
     @Autowired
     protected UserService userService;

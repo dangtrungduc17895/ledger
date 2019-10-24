@@ -2,6 +2,7 @@ package com.pet.ledger.controller.subcontroller;
 
 import com.pet.ledger.constant.CodeResponse;
 import com.pet.ledger.constant.FormatConstant;
+import com.pet.ledger.controller.BaseController;
 import com.pet.ledger.exceptionhandler.exception.MyException;
 import com.pet.ledger.model.type.GoogleUser;
 import com.pet.ledger.model.type.Session;
@@ -28,10 +29,7 @@ import java.io.IOException;
 @RestController
 @AllArgsConstructor
 @RequestMapping(value = "/v1/sessions")
-public class SessionController  {
-
-    protected UserService userService;
-    protected SessionService sessionService;
+public class SessionController extends BaseController {
 
     private final GoogleUserService googleUserService;
 
@@ -47,6 +45,7 @@ public class SessionController  {
         User user = googleUserService.getUserFromGoogleUser(googleUser);
         User findUserByEmail = userService.getUserByEmail(user.getEmail());
         if (findUserByEmail==null) {
+            user.setAmount(0.0f);
             userService.insert(user);
         }
         Session session = new Session(findUserByEmail);

@@ -22,4 +22,14 @@ public class TradingServiceImpl extends BaseService<Trading> implements TradingS
     public List<Trading> getTradingListByUser(User user) {
         return tradingRepository.getAllByUser(user);
     }
+
+    @Override
+    public int getRequestTotal(User user, Integer type, String time) {
+        return 0;
+    }
+
+    @Override
+    public int getSendTotal(User user, Integer type, String time) {
+        return 0;
+    }
 }

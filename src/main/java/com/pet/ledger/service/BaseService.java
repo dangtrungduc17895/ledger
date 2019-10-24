@@ -4,17 +4,19 @@ import com.pet.ledger.model.BaseModel;
 import com.pet.ledger.repository.ModelRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@org.springframework.stereotype.Service
+@Transactional
 public abstract class BaseService<T extends BaseModel> implements Service<T> {
 
+    @Autowired
     private ModelRepository<T> modelRepository;
 
     @Override
     public boolean insert(T entity) {
-        System.out.println(entity.getClass().getName());
         modelRepository.save(entity);
         return true;
     }

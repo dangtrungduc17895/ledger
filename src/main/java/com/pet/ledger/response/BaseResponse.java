@@ -1,15 +1,13 @@
 package com.pet.ledger.response;
 
-import com.pet.ledger.constant.DateTimeConstant;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@JsonSerialize
 public abstract class BaseResponse {
-    private long currentTime;
 
-    public BaseResponse() {
-        this.currentTime = DateTimeConstant.CURRENT_TIME_LONG_TYPE;
-    }
 }

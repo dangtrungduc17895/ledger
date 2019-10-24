@@ -1,5 +1,6 @@
 package com.pet.ledger.model.type;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pet.ledger.constant.DateTimeConstant;
 import com.pet.ledger.model.BaseModel;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class Session extends BaseModel {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties("sessions")
     private User user;
 
     public Session(User user) {

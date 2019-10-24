@@ -1,10 +1,14 @@
 package com.pet.ledger.model.type;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pet.ledger.model.BaseModel;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,11 +42,14 @@ public class User extends BaseModel {
     @Column(name = "skype")
     private String skype;
 
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Trading> tradings;
+    @Column(name = "amount")
+    private Float amount;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Trading> tradings = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Trading> sessions;
+    private List<Session> sessions;
 
     public User(String email, String name, String picture) {
         this.email = email;

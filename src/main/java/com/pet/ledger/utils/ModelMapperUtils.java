@@ -27,14 +27,5 @@ public class ModelMapperUtils {
         return entityList.stream().map(entity -> transferObject(entity, clazz)).collect(Collectors.toList());
     }
 
-    private static boolean as(int x) {
-        switch (x) {
-            case 'a': case 'e': case 'i': case 'o': case 'u': return true;
-        }
-        return false;
-    }
-
-    public static void main(String[] args) {
-    }
 
 }

@@ -1,5 +1,6 @@
 package com.pet.ledger.model.type;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pet.ledger.model.BaseModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,18 +15,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Trading extends BaseModel {
     @Column(name = "money_changes")
-    float moneyChange;
+    Float moneyChanges;
 
     @Column(name = "purpose_type")
-    int purposeType;
+    Integer purposeType;
 
     @Column(name = "time")
-    long time;
+    Long time;
 
     @Column(name = "trading_type")
-    int tradingType;
+    Integer tradingType;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnoreProperties("tradings")
     private User user;
 }
