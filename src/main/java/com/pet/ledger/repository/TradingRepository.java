@@ -12,5 +12,6 @@ import java.util.List;
 public interface TradingRepository extends  ModelRepository<Trading> {
 
     List<Trading> getAllByUser(User user);
-
+    List<Trading> getAllByUserAndTime(User user, long time); //ByDay
+    List<Trading> getTradingsByUserAndTimeBetween(User user, long start, long end); //By Month and Year
 }

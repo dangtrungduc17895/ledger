@@ -1,5 +1,6 @@
 package com.pet.ledger.controller.subcontroller;
 
+import com.pet.ledger.controller.BaseController;
 import com.pet.ledger.model.type.User;
 import com.pet.ledger.response.ResponseModel;
 import com.pet.ledger.response.type.user.UserResponse;
@@ -16,9 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/users")
 @AllArgsConstructor
-public class UserController {
-    private UserService userService;
-    private SessionService sessionService;
+public class UserController extends BaseController {
+
 
     @GetMapping()
     public ResponseEntity<ResponseModel> getUserDetail(@RequestHeader String token) {
