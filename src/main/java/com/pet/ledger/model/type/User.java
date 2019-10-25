@@ -45,6 +45,9 @@ public class User extends BaseModel {
     @Column(name = "amount")
     private Float amount;
 
+    @Column(name = "password")
+    private String password;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Trading> tradings = new ArrayList<>();
 

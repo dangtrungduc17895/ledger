@@ -26,7 +26,7 @@ public abstract class BaseController {
     protected SessionService<Session> sessionService;
 
     @Autowired
-    protected UserService userService;
+    protected UserService<User> userService;
 
     protected  String getUserIdFromTokenSession(String tokenSession) {
         Session session = sessionService.getEntityById(tokenSession);
