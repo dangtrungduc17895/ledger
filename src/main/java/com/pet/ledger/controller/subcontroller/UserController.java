@@ -41,7 +41,7 @@ public class UserController extends BaseController {
 
     @PutMapping("/{id}/avatar")
     public ResponseEntity<ResponseModel> updateUserAvatar(@PathVariable(value = "id", required = true) String userId,
-                                                          @RequestParam(value = "image", required = false) @NotNull(message = "No file selected") MultipartFile image) {
+                                                          @RequestBody @NotNull(message = "No file selected") MultipartFile image) {
         String pathFile = userService.updateAvatar(userId, image);
         UploadImageResponse updateUserResponse = new UploadImageResponse(pathFile);
         return ResponseUtils.buildResponseEntity(updateUserResponse, HttpStatus.OK);
