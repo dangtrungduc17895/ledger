@@ -62,14 +62,15 @@ public class UserServiceImpl extends BaseService<User> implements UserService<Us
 //        return true;
 //    }
 
-//    @Override
-    public boolean updateById(String id, EditUserRequest entity) {
+    @Override
+    public boolean updateById(String id, User entity) {
 
         userRepository.findById(id).map(user -> {
-            user.setName(entity.getUserName());
-            user.setSkype(entity.getUserSkype());
-            user.setPhoneNumber(entity.getUserPhoneNumber());
-            user.setPicture(entity.getUserPicture());
+            user.setName(entity.getName());
+            user.setSkype(entity.getSkype());
+            user.setPhoneNumber(entity.getPhoneNumber());
+            user.setFamilyName(entity.getFamilyName());
+            user.setEmail(entity.getEmail());
             return userRepository.save(user);
         }).orElseThrow(()-> new MyException("User not find by id"));
 

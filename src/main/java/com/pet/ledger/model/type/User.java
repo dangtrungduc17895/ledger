@@ -1,11 +1,9 @@
 package com.pet.ledger.model.type;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pet.ledger.model.BaseModel;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

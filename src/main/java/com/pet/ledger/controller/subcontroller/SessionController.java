@@ -12,8 +12,6 @@ import com.pet.ledger.response.ResponseModel;
 import com.pet.ledger.response.type.session.LoginResponse;
 import com.pet.ledger.response.type.session.LogoutResponse;
 import com.pet.ledger.service.base.GoogleUserService;
-import com.pet.ledger.service.base.SessionService;
-import com.pet.ledger.service.base.UserService;
 import com.pet.ledger.utils.ResponseUtils;
 import com.pet.ledger.utils.ValidateUtils;
 import lombok.AllArgsConstructor;

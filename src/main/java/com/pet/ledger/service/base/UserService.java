@@ -11,5 +11,6 @@ public interface UserService<E extends User> extends Service<E> {
     List<User> listUserByCourse(String courseId, String email);
     List<User> findAll();
 
+
     void changeAmountUser(User user, float moneyChanges);
 }
