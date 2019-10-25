@@ -3,7 +3,6 @@ package com.pet.ledger.model.type;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pet.ledger.model.BaseModel;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,9 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseModel {
-
-    @Id
-    private String id;
 
     @Column(name = "email")
     private String email;

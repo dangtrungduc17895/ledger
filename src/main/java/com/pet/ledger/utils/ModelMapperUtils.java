@@ -16,7 +16,7 @@ public class ModelMapperUtils {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     }
 
-    private ModelMapperUtils() {}
+    public ModelMapperUtils() {}
 
     public static <T> T transferObject(Object object, Class<T> clazz){
         ModelMapper modelMapper = new ModelMapper();
@@ -27,5 +27,10 @@ public class ModelMapperUtils {
         return entityList.stream().map(entity -> transferObject(entity, clazz)).collect(Collectors.toList());
     }
 
-
+    private static boolean as(int x) {
+        switch (x) {
+            case 'a': case 'e': case 'i': case 'o': case 'u': return true;
+        }
+        return false;
+    }
 }

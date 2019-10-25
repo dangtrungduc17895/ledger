@@ -5,6 +5,7 @@ import com.pet.ledger.exceptionhandler.exception.MyException;
 import com.pet.ledger.model.type.User;
 import com.pet.ledger.repository.UserRepository;
 import com.pet.ledger.service.BaseService;
+import com.pet.ledger.request.type.user.EditUserRequest;
 import com.pet.ledger.service.base.UserService;
 import com.pet.ledger.utils.ValidateUtils;
 import lombok.AllArgsConstructor;
@@ -56,14 +57,19 @@ public class UserServiceImpl extends BaseService<User> implements UserService<Us
     }
 
 
-    @Override
-    public boolean updateById(String id, User entity) {
+//    @Override
+//    public boolean updateById(String id, User entity) {
+//        return true;
+//    }
+
+//    @Override
+    public boolean updateById(String id, EditUserRequest entity) {
 
         userRepository.findById(id).map(user -> {
-            user.setName(entity.getName());
-            user.setSkype(entity.getSkype());
-            user.setPhoneNumber(entity.getPhoneNumber());
-            user.setPicture(entity.getPicture());
+            user.setName(entity.getUserName());
+            user.setSkype(entity.getUserSkype());
+            user.setPhoneNumber(entity.getUserPhoneNumber());
+            user.setPicture(entity.getUserPicture());
             return userRepository.save(user);
         }).orElseThrow(()-> new MyException("User not find by id"));
 
