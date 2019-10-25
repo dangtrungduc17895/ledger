@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface TradingRepository extends  ModelRepository<Trading> {
+public interface TradingRepository extends ModelRepository<Trading> {
 
     List<Trading> getAllByUser(User user);
     List<Trading> getAllByUserAndTime(User user, long time); //ByDay
