@@ -1,15 +1,19 @@
-package com.pet.ledger.request.type.user;
+package com.pet.ledger.response.type.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.pet.ledger.request.BaseRequest;
-import lombok.*;
+import com.pet.ledger.response.BaseResponse;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@Data
+/*
+ *
+ * @author SonNX
+ */
 @AllArgsConstructor
 @NoArgsConstructor
-public class EditUserRequest extends BaseRequest {
+@Data
+public class UpdateUserResponse extends BaseResponse {
     @JsonProperty("email")
     private String email;
 

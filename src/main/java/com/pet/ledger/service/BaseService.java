@@ -23,9 +23,7 @@ public abstract class BaseService<T extends BaseModel> implements Service<T> {
     }
 
     @Override
-    public boolean updateById(String id, T entity) {
-        return false;
-    }
+    public void updateById(String id, T entity) {}
 
     @Override
     public boolean deleteById(String id) {

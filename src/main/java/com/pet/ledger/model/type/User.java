@@ -1,22 +1,19 @@
 package com.pet.ledger.model.type;
 
 import com.pet.ledger.model.BaseModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "users", schema = "public")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseModel {
+
     @Column(name = "email")
     private String email;
 
@@ -49,7 +46,6 @@ public class User extends BaseModel {
 
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Session> sessions;
-
 
     public User(String email, String name, String picture) {
         this.email = email;

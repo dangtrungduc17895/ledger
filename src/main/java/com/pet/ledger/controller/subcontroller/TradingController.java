@@ -30,7 +30,6 @@ public class TradingController extends BaseController {
     @PostMapping()
     public ResponseEntity<ResponseModel> insertTrading(@RequestHeader("token")String token,
                                                        @RequestBody CreateTradingRequest createTradingRequest) {
-
         User user = getUserFromTokenSession(token);
         Trading trading = ModelMapperUtils.transferObject(createTradingRequest, Trading.class);
         trading.setUser(user);

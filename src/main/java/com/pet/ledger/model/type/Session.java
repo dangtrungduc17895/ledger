@@ -11,7 +11,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sessions ", schema = "public")
+@Table(name = "sessions", schema = "public")
 @Getter
 @Setter
 @AllArgsConstructor

@@ -1,8 +1,6 @@
 package com.pet.ledger.service.impl;
 
 import com.pet.ledger.constant.DateTimeConstant;
-import com.pet.ledger.constant.MessageConstant;
-import com.pet.ledger.exceptionhandler.exception.MyException;
 import com.pet.ledger.model.type.Session;
 import com.pet.ledger.repository.SessionRepository;
 import com.pet.ledger.service.BaseService;
