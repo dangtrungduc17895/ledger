@@ -23,9 +23,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class UserController extends BaseController {
 
-
-    @GetMapping("/account")
-    public ResponseEntity<ResponseModel> getUserDetail(@RequestHeader("token")String token) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseModel> getUserDetail(@RequestHeader String token) {
         User user = sessionService.getEntityById(token).getUser();
         UserDetailResponse userResponse = ModelMapperUtils.transferObject(user, UserDetailResponse.class);
         return ResponseUtils.buildResponseEntity(userResponse, HttpStatus.OK);

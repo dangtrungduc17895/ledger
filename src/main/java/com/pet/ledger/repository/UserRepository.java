@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,String>, JpaSpecificationExecutor<User>, UserRepositoryCustom {
+public interface UserRepository extends ModelRepository<User>, JpaSpecificationExecutor<User>, UserRepositoryCustom {
     User findAllByEmail(String email);
 
     @Query(value = "SELECT email, users.id, name, given_name, family_name, picture, phone_number\n"

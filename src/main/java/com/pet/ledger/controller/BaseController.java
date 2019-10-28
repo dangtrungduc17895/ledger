@@ -6,14 +6,19 @@ import com.pet.ledger.model.type.User;
 import com.pet.ledger.response.ResponseModel;
 import com.pet.ledger.service.base.SessionService;
 import com.pet.ledger.service.base.UserService;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class BaseController {
 
     protected static final ResponseEntity<ResponseModel> NOT_CAPTAIN_COURSE = new ResponseEntity<>(new ResponseModel(

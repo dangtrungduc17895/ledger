@@ -36,17 +36,18 @@ public class SessionController extends BaseController {
 
         log.info("REQUEST: "+loginRequest.toString());
         GoogleUser googleUser = googleUserService.getGoogleUserInfo(loginRequest.getToken());
-        if (ValidateUtils.isNotNTQMail(googleUser.getEmail(), FormatConstant.FORMAT_NTQ_MAIL)){
-            return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
-
-        }
+//        if (ValidateUtils.isNotNTQMail(googleUser.getEmail(), FormatConstant.FORMAT_NTQ_MAIL)){
+//            return new ResponseEntity<>(new ResponseModel(CodeResponse.FAIL_CODE.getCode()), HttpStatus.OK);
+//
+//        }
         User user = googleUserService.getUserFromGoogleUser(googleUser);
         User findUserByEmail = userService.getUserByEmail(user.getEmail());
+        Session session = new Session(findUserByEmail);
         if (findUserByEmail==null) {
             user.setAmount(0.0f);
             userService.insert(user);
+            session.setUser(user);
         }
-        Session session = new Session(findUserByEmail);
         sessionService.insert(session);
         LoginResponse loginResponse = new LoginResponse(session.getId(),user.getName(),user.getPicture());
         log.info("RESPOND: "+loginResponse.toString());
