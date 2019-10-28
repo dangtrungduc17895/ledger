@@ -42,7 +42,7 @@ public class TradingController extends BaseController {
     @GetMapping()
     public ResponseEntity<ResponseModel> getTradingList(@RequestHeader("token")String token) {
 
-        User user = sessionService.getEntityById(token).getUser();
+        User user = getUserFromTokenSession(token);
         List<Trading> tradings = tradingService.getTradingListByUser(user);
         List<TradingResponse> tradingResponses = ModelMapperUtils.transferListObject(tradings, TradingResponse.class);
         TradingListResponse tradingListResponse = new TradingListResponse(tradingResponses);

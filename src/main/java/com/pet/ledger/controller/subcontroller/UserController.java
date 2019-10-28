@@ -6,6 +6,7 @@ import com.pet.ledger.response.ResponseModel;
 import com.pet.ledger.response.type.user.UserResponse;
 import com.pet.ledger.service.base.SessionService;
 import com.pet.ledger.service.base.UserService;
+import com.pet.ledger.utils.ModelMapperUtils;
 import com.pet.ledger.utils.ResponseUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,8 +23,8 @@ public class UserController extends BaseController {
 
     @GetMapping()
     public ResponseEntity<ResponseModel> getUserDetail(@RequestHeader String token) {
-        User user = sessionService.getEntityById(token).getUser();
-        UserResponse userResponse = new UserResponse(user);
+        User user = getUserFromTokenSession(token);
+        UserResponse userResponse = ModelMapperUtils.transferObject(user, UserResponse.class);
         return ResponseUtils.buildResponseEntity(userResponse, HttpStatus.OK);
     }
 
