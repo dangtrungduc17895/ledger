@@ -31,7 +31,7 @@ public class IsExpiredSessionInterceptor extends HandlerInterceptorAdapter {
     @Bean
     @Autowired
     public MappedInterceptor getMappedInterceptor(IsExpiredSessionInterceptor isExpiredSessionInterceptor) {
-        return new MappedInterceptor(new String[]{"/**"}, new String[]{"/v1/sessions","/v1/sessions/{session_id}"}
+        return new MappedInterceptor(new String[]{"/**"}, new String[]{"/v1/sessions","/v1/sessions/{session_id}", "/test/**"}
         , isExpiredSessionInterceptor);
     }
 }
